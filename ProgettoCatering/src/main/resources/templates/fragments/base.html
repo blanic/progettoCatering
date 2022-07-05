@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="headerfiles(title)">
+	<meta charset="UTF-8" />
+	<link th:href="@{/css/my-style.css}" rel="stylesheet">
+	<title th:text="${title}"></title>
+</head>
+
+<body>
+
+	<header th:fragment="menu">
+		<div class="Menu">
+  <a th:href="@{/}">Japanese Catering</a>
+  <a th:href="@{/buffet}">I nostri buffet</a>
+  <a th:href="@{/chef}">I nostri chef</a>
+  <a th:href="@{/about}">About</a>
+</div>
+	</header>
+	
+	<header th:fragment="menuAdmin">
+		<div class="MenuAdmin">
+  <a th:href="@{/default}">Japanese Catering</a>
+  <a th:href="@{/admin/buffet}">Gestisci buffet</a>
+  <a th:href="@{/admin/chef}">Gestisci chef</a>
+  <a th:href="@{/admin/piatto}">Gestisci piatti</a>
+  <a th:href="@{/admin/ingrediente}">Gestisci ingredienti</a>
+  <a th:href="@{/admin/register}">Registra un nuovo amministratore</a>
+  <a th:href="@{/logout}">logout</a>
+</div>
+	</header>
+
+	
+	
+	<footer th:fragment="footer">
+		<div class="Footer">
+  <span> progetto di sistemi informativi su web di Nicole Blagojevic</span>
+</div>
+	</footer>
+	
+	
+</body>
+</html>

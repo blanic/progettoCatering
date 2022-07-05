@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.nome})">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/css/my-style.css">
+<style>
+body {font-family: "Times New Roman", Georgia, Serif;}
+</style>
+</head>
+
+<body>
+
+<header th:replace="fragments/base.html :: menuAdmin"></header>
+
+    <div class="scheda" id="schedaCancellazioneIngrediente">
+    <div class="schedaText">
+      <h2> Confermi di voler cancellare questo ingrediente? </h2>
+      <h3 class="titoloScheda" th:text="${ingrediente.nome}">nome</h3>
+      <h4 th:text="${ingrediente.descrizione}">descrizione</h4>
+      <h4 th:text="${ingrediente.origine}">origine</h4>
+      <form th:action="@{'/admin/deleteIngrediente'+'/'+${ingrediente.id}}" method="POST">
+				<span><button class="deleteButton" type="Cancella">Cancella</button></span>
+	</form>
+    </div>
+    <div class="immagineChef">
+      <img src="/iNostribuffet.jpg" class="img" height="90%">
+    </div>
+  </div>
+    <footer th:replace="fragments/base.html :: footer"></footer>
+</body>
+</html>

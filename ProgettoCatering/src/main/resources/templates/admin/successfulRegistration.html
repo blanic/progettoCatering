@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.nome})"> </head>
+<body>
+	<header th:replace="fragments/base.html :: menu"></header>
+	<div>
+    	<h4 th:text="#{header.registra}">Registrazione</h4>
+		<h1>La registrazione del nuovo amministratore è andata a buon fine.</h1>
+	</div>
+    <footer th:replace="fragments/base.html :: footer" ></footer>
+</body>
+</html>

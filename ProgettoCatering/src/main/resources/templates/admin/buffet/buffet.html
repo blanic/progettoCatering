@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.nome})">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/css/my-style.css">
+<style>
+body {font-family: "Times New Roman", Georgia, Serif;}
+</style>
+</head>
+
+<body>
+
+<header th:replace="fragments/base.html :: menuAdmin"></header>
+
+    <div class="scheda" id="schedaBuffetAdmin">
+    <div class="schedaText">
+      <h1 class="titoloScheda" th:text="${buffet.nome}">nome</h1>
+      <h4 th:text="${buffet.descrizione}">descrizione</h4>
+      
+      <div th:if="${chef}" th:object="${chef}">
+          Chef: <a href="admin/chef/chef.html" th:href="@{'/admin/chef'+'/'+${chef.id}}"
+        th:text="${chef.nome}+' '+${chef.cognome}">nome e cognome </a>
+        <form th:action="@{'/admin/toSetChef'+'/'+${buffet.id}}" method="POST">
+				<span><button class="addButton" type="cambia chef">cambia chef</button></span>
+	</form>
+	 <form th:action="@{'/admin/toRemoveChef'+'/'+${buffet.id}}" method="POST">
+				<span><button class="removeButton" type="rimuovi chef">rimuovi chef</button></span>
+	</form>
+      </div>
+      <div th:unless="${chef}">Nessuno Chef </form>
+	 <form th:action="@{'/admin/toSetChef'+'/'+${buffet.id}}" method="POST">
+				<span><button class="addButton" type="scegli chef">scegli chef</button></span>
+	</form>
+			</div>
+ 
+     <div class=corpoElenco>
+     <h3> Menù:</h3>
+      <div th:each="piatto : ${piatti}"> 
+      <p> <a href="admin/piatto/piatto.html" th:href="@{'/admin/piatto'+'/'+${piatto.id}}"
+        th:text="${piatto.nome}">nome piatto</a> </p>
+      <form th:action="@{'/admin/toRemovePiatto'+'/'+${buffet.id}+'/'+${piatto.id}}" method="POST">
+				<span><button class="removeButton" type="rimuovi">rimuovi</button></span>
+	</form>
+      </div>
+      <form th:action="@{'/admin/toAddPiatto'+'/'+${buffet.id}}" method="POST">
+				<span><button class="addButton" type="Aggiungi un  piatto al menù">Aggiungi un piatto al menù</button></span>
+	</form>
+    </div>
+    </div>
+    <div class="immagineChef">
+      <img src="/iNostribuffet.jpg" class="img" height="90%">
+    </div>
+  </div>
+    <footer th:replace="fragments/base.html :: footer"></footer>
+</body>
+</html>

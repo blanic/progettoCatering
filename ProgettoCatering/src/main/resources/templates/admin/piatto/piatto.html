@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.nome})">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/css/my-style.css">
+<style>
+body {font-family: "Times New Roman", Georgia, Serif;}
+</style>
+</head>
+
+<body>
+
+<header th:replace="fragments/base.html :: menuAdmin"></header>
+
+    <div class="scheda" id="schedaPiattoAdmin">
+    <div class="schedaText">
+      <h1 class="titoloScheda" th:text="${piatto.nome}">nome</h1>
+      <h4 th:text="${piatto.descrizione}">descrizione</h4>
+     <div class=corpoElenco>
+     <h3> Ingredienti:</h3>
+      <div th:each="ingrediente : ${listaIngredienti}"> 
+      <p> <a href="admin/ingrediente/ingrediente.html" th:href="@{'/admin/ingrediente'+'/'+${ingrediente.id}}"
+        th:text="${ingrediente.nome}">nome ingrediente</a> </p>
+      <form th:action="@{'/admin/toRemoveIngrediente'+'/'+${piatto.id}+'/'+${ingrediente.id}}" method="POST">
+				<span><button class="removeButton" type="rimuovi">rimuovi</button></span>
+	</form>
+      </div>
+      <form th:action="@{'/admin/toAddIngrediente'+'/'+${piatto.id}}"method="POST">
+				<span><button class="addButton" type="Aggiungi un  ingrediente al piatto">Aggiungi un ingrediente al piatto</button></span>
+	</form>
+    </div>
+    </div>
+    <div class="immagineChef">
+      <img src="/iNostribuffet.jpg" class="img" height="90%">
+    </div>
+  </div>
+    <footer th:replace="fragments/base.html :: footer"></footer>
+</body>
+</html>

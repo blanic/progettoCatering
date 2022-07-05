@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.nome})">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/css/my-style.css">
+<style>
+body {font-family: "Times New Roman", Georgia, Serif;}
+</style>
+</head>
+
+<body>
+
+<header th:replace="fragments/base.html :: menuAdmin"></header>
+
+    <div class="form" id="formBuffetAdmin">
+    <div class="formText">
+      <h1 class="titoloForm">Inserisci un nuovo buffet</h1>
+     <div class=corpoForm>
+      <form th:action="@{/admin/buffet}" method="POST" th:object="${buffet}">
+		<div th:if="${#fields.hasGlobalErrors()}">
+  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		</div>		
+		<div>
+			<div>
+				<span>Nome:</span>
+				<span><input type="text" th:field="*{nome}" /></span>
+				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+			</div>		
+			<div>
+				<span>Descrizione:</span>
+				<span><input type="text" th:field="*{descrizione}" /></span>
+				<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
+			</div>
+			<div>
+				<span><button class"newButton" type="Crea buffet">Crea buffet</button></span>
+			</div>
+		</div>
+	</form>
+    </div>
+    </div>
+    <div class="immagineBuffet">
+      <img src="/iNostribuffet.jpg" class="img" height="90%">
+    </div>
+  </div>
+    <footer th:replace="fragments/base.html :: footer"></footer>
+</body>
+</html>
+
+
+
+

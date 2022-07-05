@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.errore})">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/css/my-style.css">
+<style>
+body {font-family: "Times New Roman", Georgia, Serif;}
+</style>
+</head>
+<body>
+   <h1>Error!</h1>
+   <div class="errorPage">
+      <br />
+      <p>
+         There seems to be a problem with the page you requested
+(
+         <span th:text="${path}" />
+         ).
+      </p>
+      <p th:text="${'Details: ' + message}" />
+      <p th:text="${'Status: ' + status}" />
+      
+   </div>
+   
+   <footer th:replace="fragments/base.html :: footer"></footer>
+   
+</body>
+</html>

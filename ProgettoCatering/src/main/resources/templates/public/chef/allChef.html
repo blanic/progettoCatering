@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.nome})">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/css/my-style.css">
+<style>
+body {font-family: "Times New Roman", Georgia, Serif;}
+</style>
+</head>
+
+<body>
+
+<header th:replace="fragments/base.html :: menu"></header>
+
+    <div class="elenco" id="elencoChef">
+    <div class="elencoText">
+      <h1 class="titoloElenco">I nostri chef</h1>
+     <div class=corpoElenco>
+      <div th:each="chef : ${listaChef}"> 
+      <h4> <a href="public/chef/chef.html" th:href="@{'/chef'+'/'+${chef.id}}"
+        th:text="${chef.nome}+' '+${chef.cognome}">nome</a> </h4>
+      </div>
+    </div>
+    </div>
+    <div class="immagineBuffet">
+      <img src="/iNostribuffet.jpg" class="img" height="90%">
+    </div>
+  </div>
+    <footer th:replace="fragments/base.html :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.nome})">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/css/my-style.css">
+<style>
+body {font-family: "Times New Roman", Georgia, Serif;}
+</style>
+</head>
+
+<body>
+
+<header th:replace="fragments/base.html :: menuAdmin"></header>
+
+    <div class="scheda" id="schedaChefAdmin">
+    <div class="schedaText">
+      <h1 class="titoloScheda" th:text="${chef.nome}+' '+${chef.cognome}">nome e cognome</h1>
+      <h4 th:text="${chef.nazionalita}">nazionalita</h4>
+     <div class=corpoElenco>
+     <h3> Buffef proposti:</h3>
+      <div th:each="buffet : ${buffetProposti}"> 
+      <p> <a href="admin/buffet/buffet.html" th:href="@{'/admin/buffet'+'/'+${buffet.id}}"
+        th:text="${buffet.nome}">nome buffet</a> </p>
+      <form th:action="@{'/admin/toRemoveBuffet'+'/'+${buffet.id}}" method="POST">
+				<span><button class="removeButton" type="rimuovi">rimuovi</button></span>
+	</form>
+      </div>
+      <form th:action="@{'/admin/toAddBuffet'+'/'+${chef.id}}" method="POST">
+				<span><button class="addButton" type="Aggiungi un buffet">Aggiungi un buffet</button></span>
+	</form>
+    </div>
+    </div>
+    <div class="immagineChef">
+      <img src="/iNostribuffet.jpg" class="img" height="90%">
+    </div>
+  </div>
+    <footer th:replace="fragments/base.html :: footer"></footer>
+</body>
+</html>
+
+
+
+

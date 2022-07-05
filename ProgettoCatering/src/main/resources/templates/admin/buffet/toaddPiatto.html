@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.nome})">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/css/my-style.css">
+<style>
+body {font-family: "Times New Roman", Georgia, Serif;}
+</style>
+</head>
+
+<body>
+
+<header th:replace="fragments/base.html :: menuAdmin"></header>
+
+    <div class="scheda" id="schedaBuffetPiattiAggiungibiliAdmin">
+    <div class="schedaText">
+      <h1 class="titoloScheda" th:text="${buffet.nome}">nome buffet</h1>
+     <div class=corpoElenco>
+     <h3> Piatti aggiungibili:</h3>
+      <div th:each="piatto : ${elencoPiatti}"> 
+      <p> <a href="admin/piatto/piatto.html" th:href="@{'/admin/piatto'+'/'+${piatto.id}}"
+        th:text="${piatto.nome}">nome piatto</a> </p>
+      <form th:action="@{'/admin/addPiatto'+'/'+${buffet.id}+'/'+${piatto.id}}" method="POST">
+				<span><button class="addButton" type="Aggiungi">Aggiungi</button></span>
+	</form>
+      </div>
+    </div>
+    </div>
+    <div class="immagineChef">
+      <img src="/iNostribuffet.jpg" class="img" height="90%">
+    </div>
+  </div>
+    <footer th:replace="fragments/base.html :: footer"></footer>
+</body>
+</html>
+
+
+
+

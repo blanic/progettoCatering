@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.nome})">
+<title>Japanese Catering Homepage</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/css/my-style.css">
+<style>
+body {font-family: "Times New Roman", Georgia, Serif;}
+
+</style>
+</head>
+
+<body>
+
+<header th:replace="fragments/base.html :: menuAdmin"></header>
+	
+	<div class=corniceHome>
+<div class="immagineHome"><img src="/japaneseCateringHomepage.jpeg" alt="Homepage image"> 
+</div>
+</div>
+
+<footer th:replace="fragments/base.html :: footer"></footer>
+	
+</body>
+</html>
